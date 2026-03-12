@@ -10,7 +10,7 @@
         :root {
             --bg-color: #ffffff;
             --text-color: #1a202c;
-            --primary-color: #c53030; /* Crimson Red Profesional */
+            --primary-color: #c53030;
             --primary-light: #f56565;
             --card-bg: #f7fafc;
             --nav-bg: rgba(255, 255, 255, 0.95);
@@ -55,8 +55,31 @@
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; display: flex; justify-content: center; align-items: center; }
         .slide.active { opacity: 1; z-index: 2; }
         .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+        
+        /* Navigasi Slider Manual */
+        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.4); color: white; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5rem; display: flex; justify-content: center; align-items: center; z-index: 10; cursor: pointer; backdrop-filter: blur(5px); transition: var(--transition); border: 1px solid rgba(255,255,255,0.2); }
+        .slider-btn:hover { background: var(--primary-color); transform: translateY(-50%) scale(1.1); box-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .slider-btn.prev { left: 30px; }
+        .slider-btn.next { right: 30px; }
+
         .hero-content { position: absolute; z-index: 3; text-align: center; color: white; max-width: 800px; padding: 0 20px; }
         .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        
+        /* Efek Sinar Berjalan Kiri ke Kanan */
+        .shine-text-hero {
+            background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #ffeb3b 50%, #ffffff 60%, #ffffff 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shineLeftToRight 3s linear infinite;
+            display: inline-block;
+        }
+        @keyframes shineLeftToRight {
+            from { background-position: 200% center; }
+            to { background-position: 0% center; }
+        }
+
         .hero-content p { font-size: 1.2rem; opacity: 0.9; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
 
         /* --- Global Section Styles --- */
@@ -68,97 +91,85 @@
 
         /* --- Profil Section --- */
         #profil .profil-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
-        .profil-img { width: 100%; border-radius: 15px; box-shadow: var(--shadow); border: 5px solid var(--card-bg); object-fit: cover; height: 450px; }
+        .profil-img { width: 100%; aspect-ratio: 1512 / 2072; border-radius: 15px; box-shadow: var(--shadow); border: 5px solid var(--card-bg); object-fit: cover; }
         .profil-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary-color); }
         .profil-text p { margin-bottom: 1.5rem; font-size: 1.05rem; opacity: 0.9; }
 
-        /* --- Rekam Jejak (Galeri) --- */
+        /* --- Rekam Jejak --- */
         .year-section { margin-bottom: 4rem; }
         .year-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); padding-left: 10px; border-left: 5px solid var(--primary-color); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-        
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
         .gallery-item { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color); transition: var(--transition); position: relative; }
         .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .gallery-item img { width: 100%; height: 220px; object-fit: cover; transition: var(--transition); }
+        .gallery-item img { width: 100%; height: 300px; object-fit: cover; transition: var(--transition); }
         .gallery-item:hover img { transform: scale(1.05); }
-        .gallery-desc { padding: 1.2rem; }
-        .gallery-desc h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-color); }
-        .gallery-desc p { font-size: 0.9rem; opacity: 0.8; }
+        .gallery-desc { padding: 1.5rem; }
+        .gallery-desc h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-color); }
+        .gallery-desc p { font-size: 0.95rem; opacity: 0.8; }
 
         /* --- Paket Privat --- */
         #paket .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        
         .package-card { background-color: var(--card-bg); border-radius: 15px; padding: 2.5rem; border: 1px solid var(--border-color); text-align: center; position: relative; transition: var(--transition); }
         .package-card:hover { transform: scale(1.03); border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .package-card.featured { border: 2px solid var(--primary-color); }
         .package-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background-color: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .package-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-color); }
+        .package-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-color); line-height: 1.3; }
         .package-price { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 1.5rem; }
         .package-price span { font-size: 1rem; color: var(--text-color); opacity: 0.7; font-weight: 400; }
         .package-features { text-align: left; margin-bottom: 2rem; }
         .package-features li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; opacity: 0.9; }
         .package-features i { color: var(--primary-color); font-size: 1.1rem; }
-        
         .btn-package { display: inline-block; width: 100%; padding: 0.8rem; background-color: var(--primary-color); color: white; border-radius: 8px; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
         .btn-package:hover { background-color: var(--primary-light); }
 
-        /* --- Temukan Saya (Sosmed) --- */
+        /* --- Kontak --- */
         #kontak { background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
         .social-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
-        
         .social-btn { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; border-radius: 50px; background-color: var(--bg-color); border: 1px solid var(--border-color); box-shadow: var(--shadow); position: relative; overflow: hidden; font-weight: 600; font-size: 1rem; color: var(--text-color); }
         .social-btn i { font-size: 1.5rem; transition: var(--transition); z-index: 2; position: relative; }
         .social-btn span { z-index: 2; position: relative; }
         .social-btn::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; transform: translateY(100%); transition: var(--transition); border-radius: 50px; z-index: 1; }
-        
         .social-btn:hover { color: white; border-color: transparent; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .social-btn:hover i { transform: scale(1.2) rotate(5deg); }
         .social-btn:hover::after { transform: translateY(0); }
-
-        /* Warna Spesifik Sosmed Hover Effect */
         .btn-instagram:hover::after { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
         .btn-tiktok:hover::after { background-color: #000000; }
         .btn-youtube:hover::after { background-color: #ff0000; }
         .btn-whatsapp:hover::after { background-color: #25d366; }
         .btn-website:hover::after { background-color: var(--primary-color); }
 
-        /* --- Back to Top Button --- */
+        /* --- Footer --- */
+        footer { text-align: center; padding: 2rem 5%; border-top: 1px solid var(--border-color); font-size: 0.95rem; opacity: 0.9; }
+        .glow-text { color: #DAA520; font-weight: bold; display: inline-block; transition: var(--transition); background: linear-gradient(90deg, #DAA520 0%, #DAA520 45%, #ffffff 50%, #DAA520 55%, #DAA520 100%); background-size: 200% auto; background-position: 200% center; color: transparent; -webkit-background-clip: text; background-clip: text; animation: shineReverse 2.5s linear infinite; }
+        .glow-text:hover { transform: scale(1.05); color: transparent; }
+        @keyframes shineReverse { to { background-position: 0% center; } }
+
+        /* --- Back to Top --- */
         #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition); }
         #back-to-top.show { opacity: 1; visibility: visible; }
         #back-to-top:hover { background-color: var(--primary-light); transform: translateY(-5px) scale(1.1); }
 
-        /* --- Footer --- */
-        footer { text-align: center; padding: 2rem 5%; border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.8; }
-
-        /* --- Mobile Responsive (UI Terbaik) --- */
+        /* --- Mobile Responsive --- */
         @media (max-width: 992px) {
             .hero-content h1 { font-size: 2.8rem; }
             #profil .profil-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-            .profil-img { max-width: 350px; margin: 0 auto; height: auto; }
+            .profil-img { max-width: 350px; margin: 0 auto; }
         }
-
         @media (max-width: 768px) {
             nav { padding: 1rem 3%; }
             .nav-container { gap: 1rem; }
             .nav-links { display: none; }
-            
             .hero-slider { height: 60vh; }
             .hero-content h1 { font-size: 2.2rem; }
             .hero-content p { font-size: 1rem; }
-            
+            .slider-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+            .slider-btn.prev { left: 10px; }
+            .slider-btn.next { right: 10px; }
             section { padding: 4rem 3%; }
             .section-title h2 { font-size: 2rem; }
-            
-            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
-            .gallery-item img { height: 160px; }
-            .gallery-desc { padding: 0.8rem; }
-            .gallery-desc h4 { font-size: 1rem; }
-            .gallery-desc p { font-size: 0.85rem; }
-            
+            .gallery-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .gallery-item img { height: 250px; }
             .social-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; width: 100%; justify-content: center; }
-            .social-btn i { font-size: 1.3rem; }
-            
             #back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.3rem; }
         }
     </style>
@@ -175,29 +186,31 @@
                 <li><a href="#paket">Paket Privat</a></li>
                 <li><a href="#kontak">Temukan Saya</a></li>
             </ul>
-            <button id="theme-toggle">
-                <i class="fas fa-moon"></i> <span>Gelap</span>
-            </button>
+            <button id="theme-toggle"><i class="fas fa-moon"></i> <span>Gelap</span></button>
         </div>
     </nav>
 
     <section id="home" class="hero-slider">
         <div class="slider-container">
-            <div class="slide active"><img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=1920&q=80" alt="Aksi Silat Siak"></div>
-            <div class="slide"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80" alt="Latihan Fisik"></div>
-            <div class="slide"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" alt="Latihan di Alam"></div>
-            <div class="slide"><img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=1920&q=80" alt="Prestasi Tanding"></div>
-            <div class="slide"><img src="https://images.unsplash.com/photo-1526506114534-1c098939c313?auto=format&fit=crop&w=1920&q=80" alt="Dedikasi Generasi"></div>
+            <div class="slide active"><img src="slide1.jpeg" alt="Aksi Silat Siak"></div>
+            <div class="slide"><img src="slide2.jpeg" alt="Latihan Fisik"></div>
+            <div class="slide"><img src="slide3.jpeg" alt="Latihan di Alam"></div>
+            <div class="slide"><img src="slide4.jpeg" alt="Prestasi Tanding"></div>
+            <div class="slide"><img src="slide5.jpeg" alt="Dedikasi Generasi"></div>
         </div>
+        
+        <button class="slider-btn prev" onclick="changeSlide('prev')"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next" onclick="changeSlide('next')"><i class="fas fa-chevron-right"></i></button>
+
         <div class="hero-content">
-            <h1>Rekam Jejak & Pelatihan Privat Pencak Silat</h1>
+            <h1><span class="shine-text-hero">Rekam Jejak & Pelatihan</span><br>Privat Pencak Silat</h1>
             <p>Melestarikan Warisan Budaya di Tanah Siak Sri Indrapura, Riau.</p>
         </div>
     </section>
 
     <section id="profil">
         <div class="profil-grid">
-            <img src="https://images.unsplash.com/photo-1509506489701-dfe23b063818?auto=format&fit=crop&w=600&q=80" alt="Foto Profil" class="profil-img">
+            <img src="zammi.png" alt="Foto Profil" class="profil-img">
             <div class="profil-text">
                 <h3>Dedikasi di Jalur Persilatan</h3>
                 <p>Selamat datang di portofolio digital saya. Saya adalah praktisi pencak silat yang berdedikasi tinggi, berbasis di daerah Siak, Riau. Dengan pengalaman dari merintis di lahan masyarakat hingga mengajar ekstrakurikuler di berbagai sekolah, saya fokus pada pelestarian teknik tradisional dan pengembangan mental generasi muda.</p>
@@ -215,78 +228,36 @@
         <div class="year-section">
             <div class="year-title">2023 - Sekarang: Ekstrakurikuler di Berbagai Sekolah</div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Latihan Gabungan Pelajar">
-                    <div class="gallery-desc"><h4>Latihan Gabungan Pelajar</h4><p>Menyatukan siswa dari berbagai sekolah di Siak.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=600&q=80" alt="Persiapan O2SN">
-                    <div class="gallery-desc"><h4>Persiapan O2SN</h4><p>Melatih atlet pelajar untuk kompetisi tingkat kabupaten.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Ujian Kenaikan Sabuk">
-                    <div class="gallery-desc"><h4>Ujian Kenaikan Sabuk</h4><p>Evaluasi berkala untuk seluruh anggota ekstrakurikuler.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=600&q=80" alt="Demo Ekstrakurikuler">
-                    <div class="gallery-desc"><h4>Demo Ekstrakurikuler</h4><p>Penampilan seni silat pada masa orientasi siswa baru.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80" alt="Pembinaan Karakter">
-                    <div class="gallery-desc"><h4>Pembinaan Karakter</h4><p>Fokus pada kedisiplinan dan mental generasi muda.</p></div>
-                </div>
+                <div class="gallery-item"><img src="261.jpeg" alt="Pemanasan Bersama"><div class="gallery-desc"><h4>Pemanasan Gabungan Pelajar</h4><p>Momen peregangan otot dan melatih kekompakan gerakan dasar bersama seluruh siswa sebelum sesi inti dimulai.</p></div></div>
+                <div class="gallery-item"><img src="262.jpeg" alt="Fokus Target"><div class="gallery-desc"><h4>Fokus Latihan Kejuaraan</h4><p>Pemusatan latihan teknik tendangan dan bantingan intensif untuk mempersiapkan atlet pelajar menuju ajang kompetisi O2SN.</p></div></div>
+                <div class="gallery-item"><img src="263.jpeg" alt="Penyematan Sabuk"><div class="gallery-desc"><h4>Momen Kenaikan Tingkat</h4><p>Evaluasi fisik dan mental yang ditutup dengan rasa haru saat prosesi penyematan sabuk baru bagi para siswa yang lulus ujian.</p></div></div>
+                <div class="gallery-item"><img src="264.jpeg" alt="Atraksi Ganda"><div class="gallery-desc"><h4>Atraksi Memukau di Lapangan</h4><p>Penampilan jurus tangan kosong dan senjata dalam acara demonstrasi ekstrakurikuler untuk menyambut siswa baru.</p></div></div>
+                <div class="gallery-item"><img src="265.jpeg" alt="Sesi Renungan"><div class="gallery-desc"><h4>Sesi Pembinaan Mental</h4><p>Waktu khusus di akhir latihan untuk berkumpul, berdoa, dan menanamkan nilai adab kesopanan seorang pesilat sejati.</p></div></div>
+                <div class="gallery-item"><img src="266.jpeg" alt="Medali Prestasi"><div class="gallery-desc"><h4>Panen Prestasi Atlet</h4><p>Potret kebanggaan dan senyum bahagia para siswa saat memamerkan medali hasil jerih payah mereka di atas gelanggang.</p></div></div>
             </div>
         </div>
 
         <div class="year-section">
             <div class="year-title">2022 - 2023: Ekstrakurikuler SD YPPI</div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80" alt="Pengenalan Usia Dini">
-                    <div class="gallery-desc"><h4>Pengenalan Usia Dini</h4><p>Mengenalkan dasar-dasar silat yang aman untuk anak SD.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1576678927484-cc907cb5f296?auto=format&fit=crop&w=600&q=80" alt="Latihan Ketangkasan">
-                    <div class="gallery-desc"><h4>Latihan Ketangkasan</h4><p>Melatih motorik dan keseimbangan siswa SD YPPI.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Pentas Seni Sekolah">
-                    <div class="gallery-desc"><h4>Pentas Seni Sekolah</h4><p>Penampilan jurus beregu di acara perpisahan sekolah.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=600&q=80" alt="Evaluasi Gerak Dasar">
-                    <div class="gallery-desc"><h4>Evaluasi Gerak Dasar</h4><p>Merapikan teknik kuda-kuda dan pukulan.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Foto Bersama Angkatan">
-                    <div class="gallery-desc"><h4>Foto Bersama Angkatan</h4><p>Dokumentasi bersama angkatan pertama ekstrakurikuler.</p></div>
-                </div>
+                <div class="gallery-item"><img src="221.jpeg" alt="Kuda-kuda SD"><div class="gallery-desc"><h4>Belajar Kuda-kuda Dasar</h4><p>Langkah awal mengenalkan keseimbangan dan posisi kaki yang kokoh kepada anak-anak usia dini dengan cara yang menyenangkan.</p></div></div>
+                <div class="gallery-item"><img src="222.jpeg" alt="Latihan Refleks"><div class="gallery-desc"><h4>Melatih Ketangkasan Motorik</h4><p>Sesi latihan interaktif menggunakan target pad untuk mengasah fokus, refleks, dan kecepatan pukulan siswa SD.</p></div></div>
+                <div class="gallery-item"><img src="223.jpeg" alt="Pentas Seni SD"><div class="gallery-desc"><h4>Tampil Percaya Diri di Panggung</h4><p>Keberanian siswa-siswi cilik memperagakan gerak silat beregu di hadapan guru dan orang tua pada acara sekolah.</p></div></div>
+                <div class="gallery-item"><img src="224.jpeg" alt="Koreksi Gerakan"><div class="gallery-desc"><h4>Koreksi Postur Tubuh</h4><p>Pendampingan ekstra dari pelatih untuk memastikan setiap anak melakukan teknik dasar dengan posisi yang aman dari cedera.</p></div></div>
+                <div class="gallery-item"><img src="225.jpeg" alt="Ceria Pasca Latihan"><div class="gallery-desc"><h4>Keceriaan Persaudaraan</h4><p>Dokumentasi senyum lepas dan keakraban siswa SD YPPI setelah menyelesaikan sesi latihan fisik yang menguras keringat.</p></div></div>
+                <div class="gallery-item"><img src="226.jpeg" alt="Tanding Usia Dini"><div class="gallery-desc"><h4>Simulasi Tanding Sabang</h4><p>Pengenalan atmosfer pertandingan nyata lengkap dengan pengaman tubuh (body protector) untuk melatih keberanian.</p></div></div>
             </div>
         </div>
 
         <div class="year-section">
             <div class="year-title">2021 - 2022: Merintis di Lahan Masyarakat</div>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80" alt="Gotong Royong Pembukaan">
-                    <div class="gallery-desc"><h4>Gotong Royong Pembukaan</h4><p>Membersihkan lahan warga untuk dijadikan tempat latihan.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Latihan Malam Hari">
-                    <div class="gallery-desc"><h4>Latihan Malam Hari</h4><p>Memanfaatkan waktu luang dengan fasilitas seadanya.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=600&q=80" alt="Ketahanan Fisik Alam">
-                    <div class="gallery-desc"><h4>Ketahanan Fisik Alam</h4><p>Latihan keras beradaptasi dengan kondisi luar ruangan.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1526506114534-1c098939c313?auto=format&fit=crop&w=600&q=80" alt="Teknik Bertahan">
-                    <div class="gallery-desc"><h4>Teknik Bertahan</h4><p>Fokus pada aplikasi bela diri praktis.</p></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Dukungan Masyarakat">
-                    <div class="gallery-desc"><h4>Dukungan Masyarakat</h4><p>Silaturahmi dan latihan yang didukung oleh warga sekitar.</p></div>
-                </div>
+                <div class="gallery-item"><img src="20211.jpeg" alt="Buka Lahan"><div class="gallery-desc"><h4>Semangat Gotong Royong</h4><p>Momen bersejarah saat para anggota perintis bahu-membahu membersihkan lahan kosong warga untuk dijadikan gelanggang latihan.</p></div></div>
+                <div class="gallery-item"><img src="20212.jpeg" alt="Latihan Malam"><div class="gallery-desc"><h4>Berlatih di Bawah Cahaya Bulan</h4><p>Semangat pantang menyerah mengasah teknik di malam hari dengan fasilitas penerangan yang masih sangat seadanya.</p></div></div>
+                <div class="gallery-item"><img src="20213.jpeg" alt="Fisik Alam"><div class="gallery-desc"><h4>Ditempa oleh Alam</h4><p>Sesi pembentukan ketahanan fisik (stamina) yang keras dan disiplin dengan memanfaatkan kondisi alam luar ruangan.</p></div></div>
+                <div class="gallery-item"><img src="20214.jpeg" alt="Aplikasi Bantingan"><div class="gallery-desc"><h4>Aplikasi Bela Diri Praktis</h4><p>Latihan berpasangan mempraktikkan teknik tangkisan, jatuhan, dan kuncian langsung di atas permukaan tanah.</p></div></div>
+                <div class="gallery-item"><img src="20215.jpeg" alt="Dukungan Warga"><div class="gallery-desc"><h4>Dukungan Hangat Warga</h4><p>Momen istirahat yang diwarnai silaturahmi, menunjukkan bagaimana kehadiran persilatan didukung penuh oleh masyarakat sekitar.</p></div></div>
+                <div class="gallery-item"><img src="20216.jpeg" alt="Latihan Toya"><div class="gallery-desc"><h4>Eksplorasi Senjata Tradisional</h4><p>Fokus tingkat lanjut dalam menguasai kelenturan dan akurasi putaran menggunakan senjata tradisional toya (tongkat).</p></div></div>
             </div>
         </div>
     </section>
@@ -299,8 +270,8 @@
         
         <div class="packages-grid">
             <div class="package-card">
-                <h3>Dini (Anak)</h3>
-                <div class="package-price">Rp 500k <span>/ bulan</span></div>
+                <h3>Privat Silat Untuk Dini (Anak)</h3>
+                <div class="package-price">Rp 850 K <span>/ bulan</span></div>
                 <ul class="package-features">
                     <li><i class="fas fa-check-circle"></i> Usia 6 - 12 Tahun</li>
                     <li><i class="fas fa-check-circle"></i> 8 Pertemuan (2x seminggu)</li>
@@ -308,13 +279,13 @@
                     <li><i class="fas fa-check-circle"></i> Penanaman Disiplin</li>
                     <li><i class="fas fa-minus-circle" style="color: #cbd5e0;"></i> Seragam Latihan</li>
                 </ul>
-                <a href="#kontak" class="btn-package">Pilih Paket</a>
+                <a href="https://wa.me/6281276107154?text=Halo,%20saya%20tertarik%20dengan%20Privat%20Silat%20Untuk%20Dini%20(Anak)" class="btn-package" target="_blank">Tanya Paket Ini</a>
             </div>
 
             <div class="package-card featured">
                 <div class="package-badge">Paling Populer</div>
-                <h3>Reguler (Remaja/Dewasa)</h3>
-                <div class="package-price">Rp 850k <span>/ bulan</span></div>
+                <h3>Privat Silat Untuk Reguler (Remaja/Dewasa)</h3>
+                <div class="package-price">Rp 1,5 JT <span>/ bulan</span></div>
                 <ul class="package-features">
                     <li><i class="fas fa-check-circle"></i> Usia 13 Tahun Ke Atas</li>
                     <li><i class="fas fa-check-circle"></i> 12 Pertemuan (3x seminggu)</li>
@@ -322,12 +293,12 @@
                     <li><i class="fas fa-check-circle"></i> Ketahanan Fisik Intensif</li>
                     <li><i class="fas fa-check-circle"></i> Gratis Seragam Dasar</li>
                 </ul>
-                <a href="#kontak" class="btn-package">Pilih Paket</a>
+                <a href="https://wa.me/6281276107154?text=Halo,%20saya%20tertarik%20dengan%20Privat%20Silat%20Untuk%20Reguler%20(Remaja/Dewasa)" class="btn-package" target="_blank">Tanya Paket Ini</a>
             </div>
 
             <div class="package-card">
-                <h3>Prestasi (Atlet)</h3>
-                <div class="package-price">Rp 1.5M <span>/ bulan</span></div>
+                <h3>Privat Silat Untuk Prestasi (Atlet)</h3>
+                <div class="package-price">Rp 3.5 JT <span>/ bulan</span></div>
                 <ul class="package-features">
                     <li><i class="fas fa-check-circle"></i> Fokus Turnamen/Kejuaraan</li>
                     <li><i class="fas fa-check-circle"></i> Pertemuan Fleksibel (Harian)</li>
@@ -335,7 +306,7 @@
                     <li><i class="fas fa-check-circle"></i> Pendampingan Nutrisi Dasar</li>
                     <li><i class="fas fa-check-circle"></i> Gratis Seragam & *Target Pad*</li>
                 </ul>
-                <a href="#kontak" class="btn-package">Pilih Paket</a>
+                <a href="https://wa.me/6281276107154?text=Halo,%20saya%20tertarik%20dengan%20Privat%20Silat%20Untuk%20Prestasi%20(Atlet)" class="btn-package" target="_blank">Tanya Paket Ini</a>
             </div>
         </div>
     </section>
@@ -347,33 +318,32 @@
         </div>
         
         <div class="social-container">
-            <a href="#" class="social-btn btn-instagram" target="_blank">
+            <a href="https://www.instagram.com/zammi_arif/" class="social-btn btn-instagram" target="_blank">
                 <i class="fab fa-instagram"></i> <span>Instagram</span>
             </a>
-            <a href="#" class="social-btn btn-tiktok" target="_blank">
+            <a href="https://www.tiktok.com/@zammi.arif" class="social-btn btn-tiktok" target="_blank">
                 <i class="fab fa-tiktok"></i> <span>TikTok</span>
             </a>
             <a href="#" class="social-btn btn-youtube" target="_blank">
                 <i class="fab fa-youtube"></i> <span>YouTube</span>
             </a>
-            <a href="https://wa.me/628123456789" class="social-btn btn-whatsapp" target="_blank">
+            <a href="https://wa.me/6281276107154" class="social-btn btn-whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
             </a>
-            <a href="#" class="social-btn btn-website">
+            <a href="https://sobatwebsitemu.github.io/portopoliozammi/" class="social-btn btn-website">
                 <i class="fas fa-globe"></i> <span>Website Resmi</span>
             </a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Portofolio Pendekar Siak. All rights reserved.</p>
-        <p>Website designed for professional martial arts portfolio.</p>
+        <p>&copy; 2026 Portofolio Pendekar Siak. Created by <a href="https://sobatwebsitemu.github.io/CVPorto/" target="_blank" class="glow-text">Eizitpie Production</a>.</p>
     </footer>
 
     <a href="#home" id="back-to-top"><i class="fas fa-chevron-up"></i></a>
 
     <script>
-        // --- 1. Dark Mode Toggle ---
+        // --- Dark Mode ---
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = themeToggleBtn.querySelector('i');
         const themeText = themeToggleBtn.querySelector('span');
@@ -402,33 +372,46 @@
             }
         });
 
-        // --- 2. Top Slider (Hero) ---
+        // --- Top Slider (Hero) dengan Navigasi Manual ---
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
-        const slideInterval = 5000; // 5 detik
+        const slideInterval = 5000; 
+        
+        // Simpan ID interval agar bisa kita reset nanti
+        let slideTimer = setInterval(nextSlideAuto, slideInterval);
 
-        function nextSlide() {
+        function nextSlideAuto() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
 
-        setInterval(nextSlide, slideInterval);
+        // Fungsi baru untuk dipanggil saat tombol manual diklik
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % slides.length;
+            } else {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            }
+            
+            slides[currentSlide].classList.add('active');
+            
+            // Reset timer agar tidak bentrok
+            clearInterval(slideTimer);
+            slideTimer = setInterval(nextSlideAuto, slideInterval);
+        }
 
-        // --- 3. Back to Top Button ---
+        // --- Back to Top ---
         const backToTopBtn = document.getElementById('back-to-top');
-
         window.onscroll = function() {
-            scrollFunction();
-        };
-
-        function scrollFunction() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add('show');
             } else {
                 backToTopBtn.classList.remove('show');
             }
-        }
+        };
     </script>
 </body>
 </html>
