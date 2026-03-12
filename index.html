@@ -31,7 +31,7 @@
         }
 
         /* --- Reset & Base Styles --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         html { scroll-behavior: smooth; }
         body { background-color: var(--bg-color); color: var(--text-color); transition: var(--transition); line-height: 1.6; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; transition: var(--transition); }
@@ -40,7 +40,7 @@
 
         /* --- Navbar --- */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background-color: var(--nav-bg); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); }
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); letter-spacing: -1px; }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); letter-spacing: -1px; text-transform: uppercase; }
         .nav-container { display: flex; align-items: center; gap: 2rem; }
         .nav-links { display: flex; gap: 2rem; }
         .nav-links a { font-weight: 600; font-size: 0.95rem; opacity: 0.8; }
@@ -54,7 +54,7 @@
         .slider-container { width: 100%; height: 100%; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; display: flex; justify-content: center; align-items: center; }
         .slide.active { opacity: 1; z-index: 2; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+        .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
         .hero-content { position: absolute; z-index: 3; text-align: center; color: white; max-width: 800px; padding: 0 20px; }
         .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .hero-content p { font-size: 1.2rem; opacity: 0.9; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
@@ -68,21 +68,21 @@
 
         /* --- Profil Section --- */
         #profil .profil-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
-        .profil-img { width: 100%; border-radius: 15px; box-shadow: var(--shadow); border: 5px solid var(--card-bg); }
+        .profil-img { width: 100%; border-radius: 15px; box-shadow: var(--shadow); border: 5px solid var(--card-bg); object-fit: cover; height: 450px; }
         .profil-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary-color); }
         .profil-text p { margin-bottom: 1.5rem; font-size: 1.05rem; opacity: 0.9; }
 
         /* --- Rekam Jejak (Galeri) --- */
         .year-section { margin-bottom: 4rem; }
-        .year-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); padding-left: 10px; border-left: 5px solid var(--primary-color); }
+        .year-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); padding-left: 10px; border-left: 5px solid var(--primary-color); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
         
         .gallery-item { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color); transition: var(--transition); position: relative; }
         .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .gallery-item img { width: 100%; height: 220px; object-fit: cover; transition: var(--transition); }
         .gallery-item:hover img { transform: scale(1.05); }
-        .gallery-desc { padding: 1rem; }
-        .gallery-desc h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .gallery-desc { padding: 1.2rem; }
+        .gallery-desc h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text-color); }
         .gallery-desc p { font-size: 0.9rem; opacity: 0.8; }
 
         /* --- Paket Privat --- */
@@ -91,9 +91,9 @@
         .package-card { background-color: var(--card-bg); border-radius: 15px; padding: 2.5rem; border: 1px solid var(--border-color); text-align: center; position: relative; transition: var(--transition); }
         .package-card:hover { transform: scale(1.03); border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .package-card.featured { border: 2px solid var(--primary-color); }
-        .package-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background-color: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+        .package-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background-color: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
-        .package-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .package-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-color); }
         .package-price { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 1.5rem; }
         .package-price span { font-size: 1rem; color: var(--text-color); opacity: 0.7; font-weight: 400; }
         .package-features { text-align: left; margin-bottom: 2rem; }
@@ -107,20 +107,21 @@
         #kontak { background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
         .social-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
         
-        .social-btn { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; border-radius: 50px; background-color: var(--bg-color); border: 1px solid var(--border-color); box-shadow: var(--shadow); position: relative; overflow: hidden; font-weight: 600; font-size: 1rem; }
-        .social-btn i { font-size: 1.5rem; transition: var(--transition); }
-        .social-btn::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; transform: scaleX(0); transition: var(--transition); border-radius: 2px; }
+        .social-btn { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; border-radius: 50px; background-color: var(--bg-color); border: 1px solid var(--border-color); box-shadow: var(--shadow); position: relative; overflow: hidden; font-weight: 600; font-size: 1rem; color: var(--text-color); }
+        .social-btn i { font-size: 1.5rem; transition: var(--transition); z-index: 2; position: relative; }
+        .social-btn span { z-index: 2; position: relative; }
+        .social-btn::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; transform: translateY(100%); transition: var(--transition); border-radius: 50px; z-index: 1; }
         
-        .social-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .social-btn:hover { color: white; border-color: transparent; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .social-btn:hover i { transform: scale(1.2) rotate(5deg); }
-        .social-btn:hover::after { transform: scaleX(1); }
+        .social-btn:hover::after { transform: translateY(0); }
 
-        /* Warna Spesifik Sosmed */
-        .btn-instagram:hover i, .btn-instagram:hover::after { color: #e1306c; background-color: #e1306c; }
-        .btn-tiktok:hover i, .btn-tiktok:hover::after { color: #000000; background-color: #000000; }
-        .btn-youtube:hover i, .btn-youtube:hover::after { color: #ff0000; background-color: #ff0000; }
-        .btn-whatsapp:hover i, .btn-whatsapp:hover::after { color: #25d366; background-color: #25d366; }
-        .btn-website:hover i, .btn-website:hover::after { color: var(--primary-color); background-color: var(--primary-color); }
+        /* Warna Spesifik Sosmed Hover Effect */
+        .btn-instagram:hover::after { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .btn-tiktok:hover::after { background-color: #000000; }
+        .btn-youtube:hover::after { background-color: #ff0000; }
+        .btn-whatsapp:hover::after { background-color: #25d366; }
+        .btn-website:hover::after { background-color: var(--primary-color); }
 
         /* --- Back to Top Button --- */
         #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition); }
@@ -134,24 +135,28 @@
         @media (max-width: 992px) {
             .hero-content h1 { font-size: 2.8rem; }
             #profil .profil-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
-            .profil-img { max-width: 300px; margin: 0 auto; }
+            .profil-img { max-width: 350px; margin: 0 auto; height: auto; }
         }
 
         @media (max-width: 768px) {
             nav { padding: 1rem 3%; }
             .nav-container { gap: 1rem; }
-            .nav-links { display: none; /* Sembunyikan link di mobile, bisa buat burger menu nanti */ }
+            .nav-links { display: none; }
             
             .hero-slider { height: 60vh; }
-            .hero-content h1 { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.2rem; }
             .hero-content p { font-size: 1rem; }
             
             section { padding: 4rem 3%; }
             .section-title h2 { font-size: 2rem; }
             
-            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+            .gallery-item img { height: 160px; }
+            .gallery-desc { padding: 0.8rem; }
+            .gallery-desc h4 { font-size: 1rem; }
+            .gallery-desc p { font-size: 0.85rem; }
             
-            .social-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+            .social-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; width: 100%; justify-content: center; }
             .social-btn i { font-size: 1.3rem; }
             
             #back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.3rem; }
@@ -161,7 +166,7 @@
 <body>
 
     <nav>
-        <div class="logo">PENDEKAR SIAK</div>
+        <div class="logo">Pendekar Siak</div>
         <div class="nav-container">
             <ul class="nav-links">
                 <li><a href="#home">Beranda</a></li>
@@ -178,11 +183,11 @@
 
     <section id="home" class="hero-slider">
         <div class="slider-container">
-            <div class="slide active"><img src="https://via.placeholder.com/1920x1080/c53030/ffffff?text=Slide+1+-+Latihan+Siak" alt="Latihan 1"></div>
-            <div class="slide"><img src="https://via.placeholder.com/1920x1080/2d3748/ffffff?text=Slide+2+-+Aksi+Silat" alt="Latihan 2"></div>
-            <div class="slide"><img src="https://via.placeholder.com/1920x1080/1a202c/ffffff?text=Slide+3+-+Budaya+Melayu" alt="Latihan 3"></div>
-            <div class="slide"><img src="https://via.placeholder.com/1920x1080/a0afc0/ffffff?text=Slide+4+-+Prestasi" alt="Latihan 4"></div>
-            <div class="slide"><img src="https://via.placeholder.com/1920x1080/4a5568/ffffff?text=Slide+5+-+Dedikasi" alt="Latihan 5"></div>
+            <div class="slide active"><img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=1920&q=80" alt="Aksi Silat Siak"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80" alt="Latihan Fisik"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" alt="Latihan di Alam"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?auto=format&fit=crop&w=1920&q=80" alt="Prestasi Tanding"></div>
+            <div class="slide"><img src="https://images.unsplash.com/photo-1526506114534-1c098939c313?auto=format&fit=crop&w=1920&q=80" alt="Dedikasi Generasi"></div>
         </div>
         <div class="hero-content">
             <h1>Rekam Jejak & Pelatihan Privat Pencak Silat</h1>
@@ -192,74 +197,99 @@
 
     <section id="profil">
         <div class="profil-grid">
-            <img src="https://via.placeholder.com/400x500?text=Foto+Profil" alt="Foto Profil" class="profil-img">
+            <img src="https://images.unsplash.com/photo-1509506489701-dfe23b063818?auto=format&fit=crop&w=600&q=80" alt="Foto Profil" class="profil-img">
             <div class="profil-text">
                 <h3>Dedikasi di Jalur Persilatan</h3>
-                <p>Selamat datang di portofolio digital saya. Saya adalah praktisi pencak silat yang berdedikasi tinggi, berbasis di daerah Siak, Riau. Dengan pengalaman bertahun-tahun dalam berlatih dan mengajar, saya fokus pada pelestarian teknik tradisional dan pengembangan mental pemuda melalui seni bela diri.</p>
-                <p>Rekam jejak ini mendokumentasikan perjalanan saya dari tahun ke tahun, dari pemusatan latihan di alam hingga panggung kejuaraan daerah. Misi saya adalah meneruskan nilai-nilai luhur silat Melayu kepada generasi penerus.</p>
+                <p>Selamat datang di portofolio digital saya. Saya adalah praktisi pencak silat yang berdedikasi tinggi, berbasis di daerah Siak, Riau. Dengan pengalaman dari merintis di lahan masyarakat hingga mengajar ekstrakurikuler di berbagai sekolah, saya fokus pada pelestarian teknik tradisional dan pengembangan mental generasi muda.</p>
+                <p>Rekam jejak ini mendokumentasikan perjalanan pengabdian saya. Misi saya adalah meneruskan nilai-nilai luhur silat Melayu dan membentuk fisik serta karakter yang tangguh bagi murid-murid saya.</p>
             </div>
         </div>
     </section>
 
     <section id="rekam-jejak">
         <div class="section-title">
-            <h2>Rekam Jejak Digital</h2>
-            <p>Dokumentasi kegiatan latihan, kejuaraan, dan pelestarian budaya dalam beberapa tahun terakhir.</p>
+            <h2>Rekam Jejak Perjalanan</h2>
+            <p>Dokumentasi perkembangan dan dedikasi mengajar pencak silat dari merintis hingga saat ini.</p>
         </div>
 
         <div class="year-section">
-            <div class="year-title">2026 (Tahun Ini)</div>
+            <div class="year-title">2023 - Sekarang: Ekstrakurikuler di Berbagai Sekolah</div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+1" alt="Kegiatan 2026 1">
-                    <div class="gallery-desc"><h4>Latihan Gabungan</h4><p>Pemusatan latihan bersama di Siak Kecil.</p></div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Latihan Gabungan Pelajar">
+                    <div class="gallery-desc"><h4>Latihan Gabungan Pelajar</h4><p>Menyatukan siswa dari berbagai sekolah di Siak.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+2" alt="Kegiatan 2026 2">
-                    <div class="gallery-desc"><h4>Workshop Budaya</h4><p>Mengisi materi pencak silat di festival budaya.</p></div>
+                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=600&q=80" alt="Persiapan O2SN">
+                    <div class="gallery-desc"><h4>Persiapan O2SN</h4><p>Melatih atlet pelajar untuk kompetisi tingkat kabupaten.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+3" alt="Kegiatan 2026 3">
-                    <div class="gallery-desc"><h4>Kejurda Riau</h4><p>Persiapan atlet untuk tingkat provinsi.</p></div>
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80" alt="Ujian Kenaikan Sabuk">
+                    <div class="gallery-desc"><h4>Ujian Kenaikan Sabuk</h4><p>Evaluasi berkala untuk seluruh anggota ekstrakurikuler.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+4" alt="Kegiatan 2026 4">
-                    <div class="gallery-desc"><h4>Latihan Alam</h4><p>Ketahanan fisik di pesisir sungai Siak.</p></div>
+                    <img src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=600&q=80" alt="Demo Ekstrakurikuler">
+                    <div class="gallery-desc"><h4>Demo Ekstrakurikuler</h4><p>Penampilan seni silat pada masa orientasi siswa baru.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+5" alt="Kegiatan 2026 5">
-                    <div class="gallery-desc"><h4>Sertifikasi Pelatih</h4><p>Program peningkatan kompetensi.</p></div>
+                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=600&q=80" alt="Pembinaan Karakter">
+                    <div class="gallery-desc"><h4>Pembinaan Karakter</h4><p>Fokus pada kedisiplinan dan mental generasi muda.</p></div>
                 </div>
             </div>
         </div>
 
         <div class="year-section">
-            <div class="year-title">2025</div>
+            <div class="year-title">2022 - 2023: Ekstrakurikuler SD YPPI</div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+1" alt="Kegiatan 2025 1">
-                    <div class="gallery-desc"><h4>Pekanbaru Open</h4><p>Medali Perak Kelas C Putra.</p></div>
+                    <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=600&q=80" alt="Pengenalan Usia Dini">
+                    <div class="gallery-desc"><h4>Pengenalan Usia Dini</h4><p>Mengenalkan dasar-dasar silat yang aman untuk anak SD.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+2" alt="Kegiatan 2025 2">
-                    <div class="gallery-desc"><h4>Demo di Istana Siak</h4><p>Penampilan untuk tamu kehormatan.</p></div>
+                    <img src="https://images.unsplash.com/photo-1576678927484-cc907cb5f296?auto=format&fit=crop&w=600&q=80" alt="Latihan Ketangkasan">
+                    <div class="gallery-desc"><h4>Latihan Ketangkasan</h4><p>Melatih motorik dan keseimbangan siswa SD YPPI.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+3" alt="Kegiatan 2025 3">
-                    <div class="gallery-desc"><h4>Latihan Mental</h4><p>Kemping bela diri di Tahura.</p></div>
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Pentas Seni Sekolah">
+                    <div class="gallery-desc"><h4>Pentas Seni Sekolah</h4><p>Penampilan jurus beregu di acara perpisahan sekolah.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+4" alt="Kegiatan 2025 4">
-                    <div class="gallery-desc"><h4>Peresmian Sasana</h4><p>Pembukaan tempat latihan baru.</p></div>
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=600&q=80" alt="Evaluasi Gerak Dasar">
+                    <div class="gallery-desc"><h4>Evaluasi Gerak Dasar</h4><p>Merapikan teknik kuda-kuda dan pukulan.</p></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+5" alt="Kegiatan 2025 5">
-                    <div class="gallery-desc"><h4>Silat Goes to School</h4><p>Mengenalkan silat di SMA Negeri 1 Siak.</p></div>
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="Foto Bersama Angkatan">
+                    <div class="gallery-desc"><h4>Foto Bersama Angkatan</h4><p>Dokumentasi bersama angkatan pertama ekstrakurikuler.</p></div>
                 </div>
             </div>
         </div>
 
-        </section>
+        <div class="year-section">
+            <div class="year-title">2021 - 2022: Merintis di Lahan Masyarakat</div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=600&q=80" alt="Gotong Royong Pembukaan">
+                    <div class="gallery-desc"><h4>Gotong Royong Pembukaan</h4><p>Membersihkan lahan warga untuk dijadikan tempat latihan.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Latihan Malam Hari">
+                    <div class="gallery-desc"><h4>Latihan Malam Hari</h4><p>Memanfaatkan waktu luang dengan fasilitas seadanya.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?auto=format&fit=crop&w=600&q=80" alt="Ketahanan Fisik Alam">
+                    <div class="gallery-desc"><h4>Ketahanan Fisik Alam</h4><p>Latihan keras beradaptasi dengan kondisi luar ruangan.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1526506114534-1c098939c313?auto=format&fit=crop&w=600&q=80" alt="Teknik Bertahan">
+                    <div class="gallery-desc"><h4>Teknik Bertahan</h4><p>Fokus pada aplikasi bela diri praktis.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Dukungan Masyarakat">
+                    <div class="gallery-desc"><h4>Dukungan Masyarakat</h4><p>Silaturahmi dan latihan yang didukung oleh warga sekitar.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="paket">
         <div class="section-title">
@@ -278,7 +308,7 @@
                     <li><i class="fas fa-check-circle"></i> Penanaman Disiplin</li>
                     <li><i class="fas fa-minus-circle" style="color: #cbd5e0;"></i> Seragam Latihan</li>
                 </ul>
-                <a href="#" class="btn-package">Pilih Paket</a>
+                <a href="#kontak" class="btn-package">Pilih Paket</a>
             </div>
 
             <div class="package-card featured">
@@ -292,7 +322,7 @@
                     <li><i class="fas fa-check-circle"></i> Ketahanan Fisik Intensif</li>
                     <li><i class="fas fa-check-circle"></i> Gratis Seragam Dasar</li>
                 </ul>
-                <a href="#" class="btn-package">Pilih Paket</a>
+                <a href="#kontak" class="btn-package">Pilih Paket</a>
             </div>
 
             <div class="package-card">
@@ -301,11 +331,11 @@
                 <ul class="package-features">
                     <li><i class="fas fa-check-circle"></i> Fokus Turnamen/Kejuaraan</li>
                     <li><i class="fas fa-check-circle"></i> Pertemuan Fleksibel (Harian)</li>
-                    <li><i class="fas fa-check-circle"></i> Strategi Tanding & Evaluasi Video</li>
+                    <li><i class="fas fa-check-circle"></i> Strategi Tanding & Evaluasi</li>
                     <li><i class="fas fa-check-circle"></i> Pendampingan Nutrisi Dasar</li>
                     <li><i class="fas fa-check-circle"></i> Gratis Seragam & *Target Pad*</li>
                 </ul>
-                <a href="#" class="btn-package">Pilih Paket</a>
+                <a href="#kontak" class="btn-package">Pilih Paket</a>
             </div>
         </div>
     </section>
@@ -318,19 +348,19 @@
         
         <div class="social-container">
             <a href="#" class="social-btn btn-instagram" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
+                <i class="fab fa-instagram"></i> <span>Instagram</span>
             </a>
             <a href="#" class="social-btn btn-tiktok" target="_blank">
-                <i class="fab fa-tiktok"></i> TikTok
+                <i class="fab fa-tiktok"></i> <span>TikTok</span>
             </a>
             <a href="#" class="social-btn btn-youtube" target="_blank">
-                <i class="fab fa-youtube"></i> YouTube
+                <i class="fab fa-youtube"></i> <span>YouTube</span>
             </a>
             <a href="https://wa.me/628123456789" class="social-btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> WhatsApp
+                <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
             </a>
             <a href="#" class="social-btn btn-website">
-                <i class="fas fa-globe"></i> Website Resmi
+                <i class="fas fa-globe"></i> <span>Website Resmi</span>
             </a>
         </div>
     </section>
