@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Pendekar Siak - Riau | Personal Record</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- Root Variables & Themes --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a202c;
+            --primary-color: #c53030; /* Crimson Red Profesional */
+            --primary-light: #f56565;
+            --card-bg: #f7fafc;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --primary-color: #fc8181;
+            --primary-light: #feb2b2;
+            --card-bg: #2d3748;
+            --nav-bg: rgba(26, 32, 44, 0.95);
+            --border-color: #4a5568;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Reset & Base Styles --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Segoe UI', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-color); color: var(--text-color); transition: var(--transition); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; transition: var(--transition); }
+
+        /* --- Navbar --- */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background-color: var(--nav-bg); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px); }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary-color); letter-spacing: -1px; }
+        .nav-container { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 600; font-size: 0.95rem; opacity: 0.8; }
+        .nav-links a:hover { color: var(--primary-color); opacity: 1; }
+        
+        #theme-toggle { font-size: 1rem; font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 50px; background-color: var(--card-bg); color: var(--text-color); border: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.5rem; }
+        #theme-toggle:hover { background-color: var(--border-color); }
+
+        /* --- Top Slider (Hero) --- */
+        .hero-slider { position: relative; width: 100%; height: 80vh; overflow: hidden; }
+        .slider-container { width: 100%; height: 100%; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; z-index: 1; display: flex; justify-content: center; align-items: center; }
+        .slide.active { opacity: 1; z-index: 2; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+        .hero-content { position: absolute; z-index: 3; text-align: center; color: white; max-width: 800px; padding: 0 20px; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .hero-content p { font-size: 1.2rem; opacity: 0.9; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+
+        /* --- Global Section Styles --- */
+        section { padding: 5rem 5%; }
+        .section-title { text-align: center; margin-bottom: 3.5rem; position: relative; }
+        .section-title h2 { font-size: 2.5rem; font-weight: 800; color: var(--text-color); }
+        .section-title h2::after { content: ''; display: block; width: 60px; height: 4px; background-color: var(--primary-color); margin: 10px auto 0; border-radius: 2px; }
+        .section-title p { max-width: 600px; margin: 1rem auto 0; opacity: 0.8; }
+
+        /* --- Profil Section --- */
+        #profil .profil-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
+        .profil-img { width: 100%; border-radius: 15px; box-shadow: var(--shadow); border: 5px solid var(--card-bg); }
+        .profil-text h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary-color); }
+        .profil-text p { margin-bottom: 1.5rem; font-size: 1.05rem; opacity: 0.9; }
+
+        /* --- Rekam Jejak (Galeri) --- */
+        .year-section { margin-bottom: 4rem; }
+        .year-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-color); padding-left: 10px; border-left: 5px solid var(--primary-color); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        
+        .gallery-item { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border-color); transition: var(--transition); position: relative; }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 220px; object-fit: cover; transition: var(--transition); }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-desc { padding: 1rem; }
+        .gallery-desc h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .gallery-desc p { font-size: 0.9rem; opacity: 0.8; }
+
+        /* --- Paket Privat --- */
+        #paket .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        
+        .package-card { background-color: var(--card-bg); border-radius: 15px; padding: 2.5rem; border: 1px solid var(--border-color); text-align: center; position: relative; transition: var(--transition); }
+        .package-card:hover { transform: scale(1.03); border-color: var(--primary-color); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .package-card.featured { border: 2px solid var(--primary-color); }
+        .package-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background-color: var(--primary-color); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
+        
+        .package-card h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; }
+        .package-price { font-size: 2.5rem; font-weight: 800; color: var(--primary-color); margin-bottom: 1.5rem; }
+        .package-price span { font-size: 1rem; color: var(--text-color); opacity: 0.7; font-weight: 400; }
+        .package-features { text-align: left; margin-bottom: 2rem; }
+        .package-features li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; opacity: 0.9; }
+        .package-features i { color: var(--primary-color); font-size: 1.1rem; }
+        
+        .btn-package { display: inline-block; width: 100%; padding: 0.8rem; background-color: var(--primary-color); color: white; border-radius: 8px; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .btn-package:hover { background-color: var(--primary-light); }
+
+        /* --- Temukan Saya (Sosmed) --- */
+        #kontak { background-color: var(--card-bg); border-top: 1px solid var(--border-color); }
+        .social-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+        
+        .social-btn { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; border-radius: 50px; background-color: var(--bg-color); border: 1px solid var(--border-color); box-shadow: var(--shadow); position: relative; overflow: hidden; font-weight: 600; font-size: 1rem; }
+        .social-btn i { font-size: 1.5rem; transition: var(--transition); }
+        .social-btn::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; transform: scaleX(0); transition: var(--transition); border-radius: 2px; }
+        
+        .social-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .social-btn:hover i { transform: scale(1.2) rotate(5deg); }
+        .social-btn:hover::after { transform: scaleX(1); }
+
+        /* Warna Spesifik Sosmed */
+        .btn-instagram:hover i, .btn-instagram:hover::after { color: #e1306c; background-color: #e1306c; }
+        .btn-tiktok:hover i, .btn-tiktok:hover::after { color: #000000; background-color: #000000; }
+        .btn-youtube:hover i, .btn-youtube:hover::after { color: #ff0000; background-color: #ff0000; }
+        .btn-whatsapp:hover i, .btn-whatsapp:hover::after { color: #25d366; background-color: #25d366; }
+        .btn-website:hover i, .btn-website:hover::after { color: var(--primary-color); background-color: var(--primary-color); }
+
+        /* --- Back to Top Button --- */
+        #back-to-top { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background-color: var(--primary-color); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 999; opacity: 0; visibility: hidden; transition: var(--transition); }
+        #back-to-top.show { opacity: 1; visibility: visible; }
+        #back-to-top:hover { background-color: var(--primary-light); transform: translateY(-5px) scale(1.1); }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 2rem 5%; border-top: 1px solid var(--border-color); font-size: 0.9rem; opacity: 0.8; }
+
+        /* --- Mobile Responsive (UI Terbaik) --- */
+        @media (max-width: 992px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            #profil .profil-grid { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .profil-img { max-width: 300px; margin: 0 auto; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 3%; }
+            .nav-container { gap: 1rem; }
+            .nav-links { display: none; /* Sembunyikan link di mobile, bisa buat burger menu nanti */ }
+            
+            .hero-slider { height: 60vh; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            
+            section { padding: 4rem 3%; }
+            .section-title h2 { font-size: 2rem; }
+            
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+            
+            .social-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+            .social-btn i { font-size: 1.3rem; }
+            
+            #back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PENDEKAR SIAK</div>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#rekam-jejak">Rekam Jejak</a></li>
+                <li><a href="#paket">Paket Privat</a></li>
+                <li><a href="#kontak">Temukan Saya</a></li>
+            </ul>
+            <button id="theme-toggle">
+                <i class="fas fa-moon"></i> <span>Gelap</span>
+            </button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active"><img src="https://via.placeholder.com/1920x1080/c53030/ffffff?text=Slide+1+-+Latihan+Siak" alt="Latihan 1"></div>
+            <div class="slide"><img src="https://via.placeholder.com/1920x1080/2d3748/ffffff?text=Slide+2+-+Aksi+Silat" alt="Latihan 2"></div>
+            <div class="slide"><img src="https://via.placeholder.com/1920x1080/1a202c/ffffff?text=Slide+3+-+Budaya+Melayu" alt="Latihan 3"></div>
+            <div class="slide"><img src="https://via.placeholder.com/1920x1080/a0afc0/ffffff?text=Slide+4+-+Prestasi" alt="Latihan 4"></div>
+            <div class="slide"><img src="https://via.placeholder.com/1920x1080/4a5568/ffffff?text=Slide+5+-+Dedikasi" alt="Latihan 5"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Rekam Jejak & Pelatihan Privat Pencak Silat</h1>
+            <p>Melestarikan Warisan Budaya di Tanah Siak Sri Indrapura, Riau.</p>
+        </div>
+    </section>
+
+    <section id="profil">
+        <div class="profil-grid">
+            <img src="https://via.placeholder.com/400x500?text=Foto+Profil" alt="Foto Profil" class="profil-img">
+            <div class="profil-text">
+                <h3>Dedikasi di Jalur Persilatan</h3>
+                <p>Selamat datang di portofolio digital saya. Saya adalah praktisi pencak silat yang berdedikasi tinggi, berbasis di daerah Siak, Riau. Dengan pengalaman bertahun-tahun dalam berlatih dan mengajar, saya fokus pada pelestarian teknik tradisional dan pengembangan mental pemuda melalui seni bela diri.</p>
+                <p>Rekam jejak ini mendokumentasikan perjalanan saya dari tahun ke tahun, dari pemusatan latihan di alam hingga panggung kejuaraan daerah. Misi saya adalah meneruskan nilai-nilai luhur silat Melayu kepada generasi penerus.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="rekam-jejak">
+        <div class="section-title">
+            <h2>Rekam Jejak Digital</h2>
+            <p>Dokumentasi kegiatan latihan, kejuaraan, dan pelestarian budaya dalam beberapa tahun terakhir.</p>
+        </div>
+
+        <div class="year-section">
+            <div class="year-title">2026 (Tahun Ini)</div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+1" alt="Kegiatan 2026 1">
+                    <div class="gallery-desc"><h4>Latihan Gabungan</h4><p>Pemusatan latihan bersama di Siak Kecil.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+2" alt="Kegiatan 2026 2">
+                    <div class="gallery-desc"><h4>Workshop Budaya</h4><p>Mengisi materi pencak silat di festival budaya.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+3" alt="Kegiatan 2026 3">
+                    <div class="gallery-desc"><h4>Kejurda Riau</h4><p>Persiapan atlet untuk tingkat provinsi.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+4" alt="Kegiatan 2026 4">
+                    <div class="gallery-desc"><h4>Latihan Alam</h4><p>Ketahanan fisik di pesisir sungai Siak.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2026+Foto+5" alt="Kegiatan 2026 5">
+                    <div class="gallery-desc"><h4>Sertifikasi Pelatih</h4><p>Program peningkatan kompetensi.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="year-section">
+            <div class="year-title">2025</div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+1" alt="Kegiatan 2025 1">
+                    <div class="gallery-desc"><h4>Pekanbaru Open</h4><p>Medali Perak Kelas C Putra.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+2" alt="Kegiatan 2025 2">
+                    <div class="gallery-desc"><h4>Demo di Istana Siak</h4><p>Penampilan untuk tamu kehormatan.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+3" alt="Kegiatan 2025 3">
+                    <div class="gallery-desc"><h4>Latihan Mental</h4><p>Kemping bela diri di Tahura.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+4" alt="Kegiatan 2025 4">
+                    <div class="gallery-desc"><h4>Peresmian Sasana</h4><p>Pembukaan tempat latihan baru.</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/300x200?text=2025+Foto+5" alt="Kegiatan 2025 5">
+                    <div class="gallery-desc"><h4>Silat Goes to School</h4><p>Mengenalkan silat di SMA Negeri 1 Siak.</p></div>
+                </div>
+            </div>
+        </div>
+
+        </section>
+
+    <section id="paket">
+        <div class="section-title">
+            <h2>Pilihan Paket Privat</h2>
+            <p>Penawaran eksklusif latihan silat tatap muka langsung di daerah Siak. Pilih paket yang sesuai kebutuhan Anda.</p>
+        </div>
+        
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3>Dini (Anak)</h3>
+                <div class="package-price">Rp 500k <span>/ bulan</span></div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check-circle"></i> Usia 6 - 12 Tahun</li>
+                    <li><i class="fas fa-check-circle"></i> 8 Pertemuan (2x seminggu)</li>
+                    <li><i class="fas fa-check-circle"></i> Pengenalan Gerak Dasar</li>
+                    <li><i class="fas fa-check-circle"></i> Penanaman Disiplin</li>
+                    <li><i class="fas fa-minus-circle" style="color: #cbd5e0;"></i> Seragam Latihan</li>
+                </ul>
+                <a href="#" class="btn-package">Pilih Paket</a>
+            </div>
+
+            <div class="package-card featured">
+                <div class="package-badge">Paling Populer</div>
+                <h3>Reguler (Remaja/Dewasa)</h3>
+                <div class="package-price">Rp 850k <span>/ bulan</span></div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check-circle"></i> Usia 13 Tahun Ke Atas</li>
+                    <li><i class="fas fa-check-circle"></i> 12 Pertemuan (3x seminggu)</li>
+                    <li><i class="fas fa-check-circle"></i> Teknik Tanding & Seni</li>
+                    <li><i class="fas fa-check-circle"></i> Ketahanan Fisik Intensif</li>
+                    <li><i class="fas fa-check-circle"></i> Gratis Seragam Dasar</li>
+                </ul>
+                <a href="#" class="btn-package">Pilih Paket</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Prestasi (Atlet)</h3>
+                <div class="package-price">Rp 1.5M <span>/ bulan</span></div>
+                <ul class="package-features">
+                    <li><i class="fas fa-check-circle"></i> Fokus Turnamen/Kejuaraan</li>
+                    <li><i class="fas fa-check-circle"></i> Pertemuan Fleksibel (Harian)</li>
+                    <li><i class="fas fa-check-circle"></i> Strategi Tanding & Evaluasi Video</li>
+                    <li><i class="fas fa-check-circle"></i> Pendampingan Nutrisi Dasar</li>
+                    <li><i class="fas fa-check-circle"></i> Gratis Seragam & *Target Pad*</li>
+                </ul>
+                <a href="#" class="btn-package">Pilih Paket</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak">
+        <div class="section-title">
+            <h2>Temukan & Ikuti Perjalanan Saya</h2>
+            <p>Terhubung langsung melalui media sosial atau hubungi untuk informasi pelatihan.</p>
+        </div>
+        
+        <div class="social-container">
+            <a href="#" class="social-btn btn-instagram" target="_blank">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a href="#" class="social-btn btn-tiktok" target="_blank">
+                <i class="fab fa-tiktok"></i> TikTok
+            </a>
+            <a href="#" class="social-btn btn-youtube" target="_blank">
+                <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://wa.me/628123456789" class="social-btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="#" class="social-btn btn-website">
+                <i class="fas fa-globe"></i> Website Resmi
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Portofolio Pendekar Siak. All rights reserved.</p>
+        <p>Website designed for professional martial arts portfolio.</p>
+    </footer>
+
+    <a href="#home" id="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+    <script>
+        // --- 1. Dark Mode Toggle ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const themeText = themeToggleBtn.querySelector('span');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeText.textContent = 'Terang';
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeText.textContent = 'Gelap';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeText.textContent = 'Terang';
+            }
+        });
+
+        // --- 2. Top Slider (Hero) ---
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        const slideInterval = 5000; // 5 detik
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, slideInterval);
+
+        // --- 3. Back to Top Button ---
+        const backToTopBtn = document.getElementById('back-to-top');
+
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>
